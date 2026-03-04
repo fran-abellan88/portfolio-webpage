@@ -7,6 +7,7 @@ export const personal = {
   email: "contact@franabellan.com",
   linkedin: "https://www.linkedin.com/in/franabellan/",
   twitter: "https://x.com/FranAbellan88",
+  github: "https://github.com/fran-abellan88",
   cvFile: "/FranAbellan_CV_Mar26.pdf",
   photo: "/photo.jpg",
 } as const;

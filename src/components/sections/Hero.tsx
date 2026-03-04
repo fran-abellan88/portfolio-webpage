@@ -65,6 +65,14 @@ export default function Hero() {
             >
               LinkedIn
             </a>
+            <a
+              href={personal.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-8 py-3 rounded-lg border border-border-default text-text-secondary hover:border-accent/30 hover:text-accent transition-all"
+            >
+              GitHub
+            </a>
           </motion.div>
 
           {/* Quick stats */}

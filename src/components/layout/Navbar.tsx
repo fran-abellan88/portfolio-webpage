@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import Image from "next/image";
 import { navLinks, personal } from "@/lib/data";
 
 export default function Navbar() {
@@ -34,7 +35,26 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-16">
-        <a href="#" className="text-lg font-bold text-text-primary hover:text-accent transition-colors">
+        <a href="#" className="flex items-center gap-2 text-lg font-bold text-text-primary hover:text-accent transition-colors">
+          <AnimatePresence>
+            {scrolled && (
+              <motion.span
+                initial={{ opacity: 0, scale: 0.92 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.92 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="md:hidden relative w-7 h-7 rounded-full overflow-hidden border border-accent/30"
+              >
+                <Image
+                  src={personal.photo}
+                  alt={personal.name}
+                  fill
+                  sizes="28px"
+                  className="object-cover"
+                />
+              </motion.span>
+            )}
+          </AnimatePresence>
           {personal.name}
           <span className="text-accent">.</span>
         </a>
