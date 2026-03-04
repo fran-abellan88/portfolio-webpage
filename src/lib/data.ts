@@ -118,22 +118,22 @@ export interface SkillGroup {
 
 export const skills: SkillGroup[] = [
   {
-    category: "AI & LLMs",
+    category: "AI & Large Language Models",
     icon: "brain",
     skills: ["LangChain", "RAG", "Agentic AI", "MCP", "Prompt Engineering", "Vector DBs"],
   },
   {
-    category: "ML & Data Science",
+    category: "Predictive Modeling & ML",
     icon: "chart",
     skills: ["Python", "scikit-learn", "XGBoost", "PyTorch", "MLflow", "Time Series", "NLP", "Computer Vision"],
   },
   {
-    category: "Engineering & MLOps",
+    category: "MLOps & Architecture",
     icon: "code",
     skills: ["Docker", "AWS", "FastAPI", "Airflow", "SQL", "GCP", "CI/CD"],
   },
   {
-    category: "Leadership",
+    category: "AI Leadership & Strategy",
     icon: "users",
     skills: ["Team Management", "Mentoring", "Stakeholder Communication", "AI Roadmap", "Strategic Planning"],
   },
