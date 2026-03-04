@@ -14,7 +14,10 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
+const siteUrl = "https://franabellan.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "Fran Abellán | Lead Data Scientist & AI Expert",
   description:
     "Portfolio of Fran Abellán — Lead Data Scientist & AI Expert with 7+ years driving ML and AI initiatives. PhD in Astrophysics.",
@@ -27,12 +30,16 @@ export const metadata: Metadata = {
     "Fran Abellán",
   ],
   authors: [{ name: "Fran Abellán" }],
+  alternates: {
+    canonical: siteUrl,
+  },
   openGraph: {
     title: "Fran Abellán | Lead Data Scientist & AI Expert",
     description:
       "Portfolio of Fran Abellán — Lead Data Scientist & AI Expert with 7+ years driving ML and AI initiatives.",
     type: "website",
     locale: "en_US",
+    url: siteUrl,
   },
   twitter: {
     card: "summary_large_image",

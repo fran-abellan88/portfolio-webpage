@@ -4,7 +4,7 @@ export const personal = {
   title: "Lead Data Scientist & AI Expert",
   summary:
     "Data Science leader with 7+ years driving high-impact ML and AI initiatives across insurance, energy, and telecom. PhD in Astrophysics with deep expertise in LLMs, predictive modeling, and cross-functional team leadership. Proven track record translating complex AI capabilities into measurable business outcomes.",
-  email: "fran.abellan88@gmail.com",
+  email: "contact@franabellan.com",
   linkedin: "https://www.linkedin.com/in/franabellan/",
   cvFile: "/FranAbellan_CV_Mar26.pdf",
   photo: "/photo.jpg",
