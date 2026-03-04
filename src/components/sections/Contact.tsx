@@ -1,10 +1,10 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { motion } from "framer-motion";
-import SectionWrapper from "@/components/ui/SectionWrapper";
 import SectionHeading from "@/components/ui/SectionHeading";
+import SectionWrapper from "@/components/ui/SectionWrapper";
 import { personal } from "@/lib/data";
+import { motion } from "framer-motion";
+import { useState, type FormEvent } from "react";
 
 type FormStatus = "idle" | "sending" | "sent" | "error";
 

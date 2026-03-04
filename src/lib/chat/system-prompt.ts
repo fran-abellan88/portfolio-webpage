@@ -1,4 +1,4 @@
-import { personal, experience, education, skills, projects, publications } from "@/lib/data";
+import { education, experience, interests, personal, projects, publications, skills } from "@/lib/data";
 
 export function buildSystemPrompt(): string {
   const experienceText = experience
@@ -17,6 +17,10 @@ export function buildSystemPrompt(): string {
   const projectsText = projects
     .map((p) => `${p.title}: ${p.description}\nTech: ${p.tags.join(", ")}${p.url ? `\nURL: ${p.url}` : ""}`)
     .join("\n\n");
+
+  const interestsText = interests
+    .map((i) => `${i.title}: ${i.description}\nTags: ${i.tags.join(", ")}`)
+    .join("\n");
 
   return `You are an AI assistant embedded on Fran Abellán's portfolio website (franabellan.com). Your purpose is to help visitors learn about Fran's professional background, skills, and experience.
 
@@ -45,8 +49,11 @@ ${projectsText}
 ${publications.count} ${publications.label} in Astrophysics (pre-Data Science career)
 Browse: ${publications.url}
 
+[PERSONAL INTERESTS]
+${interestsText}
+
 [RULES]
-1. ONLY answer questions about Fran's professional profile, skills, experience, education, and projects.
+1. ONLY answer questions about Fran's professional profile, skills, experience, education, projects, and personal interests.
 2. If asked about anything unrelated (weather, coding help, general knowledge), politely decline and redirect: "I can only answer questions about Fran's professional profile. Feel free to ask about his experience, skills, or projects!"
 3. Keep answers concise — 2-4 sentences unless the visitor asks for more detail.
 4. Be professional, friendly, and enthusiastic about Fran's work.

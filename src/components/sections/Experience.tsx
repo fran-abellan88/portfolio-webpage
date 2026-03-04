@@ -27,9 +27,11 @@ export default function Experience() {
               tabIndex={0}
               aria-expanded={expandedIndex === i}
               className={`rounded-xl border transition-colors cursor-pointer ${
-                expandedIndex === i
-                  ? "bg-bg-surface border-accent/20 shadow-lg shadow-accent/5"
-                  : "bg-bg-surface/50 border-border-default hover:border-border-default/80"
+                exp.highlight
+                  ? "bg-accent/5 border-accent/30 shadow-lg shadow-accent/10 hover:border-accent/50"
+                  : expandedIndex === i
+                    ? "bg-bg-surface border-accent/20 shadow-lg shadow-accent/5"
+                    : "bg-bg-surface/50 border-border-default hover:border-border-default/80"
               }`}
               onClick={() => setExpandedIndex(expandedIndex === i ? -1 : i)}
               onKeyDown={(e) => {

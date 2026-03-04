@@ -48,8 +48,17 @@ src/
       SectionWrapper.tsx   # Scroll-triggered entrance animations
       SectionHeading.tsx   # Code-styled section headers (< /> syntax)
       Badge.tsx            # Skill/tech tag pill
+    chat/
+      ChatWidget.tsx       # Floating AI chatbot (Gemini-powered)
+      ChatMessages.tsx     # Message list with auto-scroll
+      ChatInput.tsx        # Input bar with send button
+      ChatBubble.tsx       # Individual message bubble
   lib/
     data.ts                # All CV/portfolio content as typed constants
+    chat/
+      system-prompt.ts     # Builds system prompt from CV data
+      rate-limit.ts        # In-memory IP-based rate limiter
+      types.ts             # ChatMessage, ChatRole types
 public/
     photo.jpg              # Professional headshot
     FranAbellan_CV_Mar26.pdf # Downloadable CV
@@ -104,7 +113,14 @@ public/
 - [x] Custom 404 page
 - [x] Vercel Analytics (@vercel/analytics)
 
-### Phase 6 — Future Enhancements (Post-Launch)
+### Phase 6 — AI Chatbot & UX Polish [DONE]
+- [x] AI chatbot powered by Gemini API (floating widget, streaming responses, system prompt with full CV context)
+- [x] Dual rate limiting: 10 msgs/session (client) + 30 msgs/IP/day (server)
+- [x] API route `/api/chat` with streaming ReadableStream
+- [x] Add GitHub social link to personal data, Footer, and system prompt
+- [x] Skills section: Leadership card promoted to first position with accent highlight
+
+### Phase 7 — Future Enhancements (Post-Launch)
 - [ ] Hobbies & personal interests section
 - [ ] Testimonials section (source quotes from LinkedIn recommendations)
 - [ ] Dark/light theme toggle

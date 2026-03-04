@@ -1,8 +1,8 @@
 "use client";
 
+import { personal } from "@/lib/data";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { personal } from "@/lib/data";
 
 export default function Hero() {
   return (

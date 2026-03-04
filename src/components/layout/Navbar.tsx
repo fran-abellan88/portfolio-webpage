@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { navLinks, personal } from "@/lib/data";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { navLinks, personal } from "@/lib/data";
+import { useEffect, useState } from "react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);

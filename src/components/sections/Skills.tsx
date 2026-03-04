@@ -1,10 +1,10 @@
 "use client";
 
+import SectionHeading from "@/components/ui/SectionHeading";
+import SectionWrapper from "@/components/ui/SectionWrapper";
+import { skills } from "@/lib/data";
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
-import SectionWrapper from "@/components/ui/SectionWrapper";
-import SectionHeading from "@/components/ui/SectionHeading";
-import { skills } from "@/lib/data";
 
 const impactMap: Record<string, string> = {
   brain: "Designing agentic workflows and LLM systems that automate high-value business decisions.",
@@ -49,20 +49,30 @@ const iconMap: Record<string, ReactNode> = {
 };
 
 export default function Skills() {
+  const orderedSkills = [...skills].sort((a, b) => {
+    if (a.icon === "users") return -1;
+    if (b.icon === "users") return 1;
+    return 0;
+  });
+
   return (
     <SectionWrapper id="skills">
       <div className="max-w-7xl mx-auto">
         <SectionHeading title="Core Competencies" subtitle="Capabilities and stack applied to real business outcomes" />
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {skills.map((group, i) => (
+          {orderedSkills.map((group, i) => (
             <motion.div
               key={group.category}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group rounded-xl bg-bg-surface border border-border-default p-6 hover:border-accent/30 hover:shadow-lg hover:shadow-accent/10 transition-all"
+              className={`group rounded-xl p-6 transition-all ${
+                group.icon === "users"
+                  ? "bg-accent/5 border border-accent/30 shadow-lg shadow-accent/10 hover:border-accent/50"
+                  : "bg-bg-surface border border-border-default hover:border-accent/30 hover:shadow-lg hover:shadow-accent/10"
+              }`}
             >
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-text-muted group-hover:text-accent transition-colors">{iconMap[group.icon]}</span>

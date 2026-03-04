@@ -120,7 +120,7 @@ export const skills: SkillGroup[] = [
   {
     category: "AI & Large Language Models",
     icon: "brain",
-    skills: ["LangChain", "RAG", "Agentic AI", "MCP", "Prompt Engineering", "Vector DBs"],
+    skills: ["LangChain", "RAG", "Agentic AI", "MCP", "Prompt Engineering", "Vector DBs", "n8n"],
   },
   {
     category: "Predictive Modeling & ML",
@@ -169,11 +169,52 @@ export const publications = {
   url: "https://ui.adsabs.harvard.edu/search/filter_database_fq_database=OR&filter_database_fq_database=database%3A%22astronomy%22&format=SHORT&fq=%7B!type%3Daqp%20v%3D%24fq_database%7D&fq_database=(database%3A%22astronomy%22)&q=author%3A(%22Abellan%5C%2C%20F.%20J.%22)&sort=score%20desc%2C%20bibcode%20desc&unprocessed_parameter=adsobj_query&unprocessed_parameter=qform&p_=0",
 } as const;
 
+export interface Interest {
+  title: string;
+  icon: string;
+  description: string;
+  tags: string[];
+  url?: string;
+}
+
+export const interests: Interest[] = [
+  {
+    title: "Pattern Recognition",
+    icon: "puzzle",
+    description:
+      "Solving Rubik's Cubes in under 20 seconds and playing chess — always optimizing for the next move.",
+    tags: ["Rubik's Cube", "Chess", "Investments"],
+  },
+  {
+    title: "Sports & Data",
+    icon: "basketball",
+    description:
+      "Massive sports fan who built an NBA Fantasy Analytics Platform combining data science with passion.",
+    tags: ["Basketball", "Football", "UFC", "Cycling", "Tennis"],
+    url: "https://nba-yahoo-fantasy-daily-dose.vercel.app/?tab=home",
+  },
+  {
+    title: "Under Pressure",
+    icon: "escape",
+    description:
+      "Thriving in high-stakes environments — solving complex puzzles in Horror Escape Rooms with friends.",
+    tags: ["Horror Escape Rooms", "Teamwork"],
+  },
+  {
+    title: "Craft & Senses",
+    icon: "coffee",
+    description:
+      "Appreciating the science behind good taste — from specialty coffee and craft beer to perfumes and cooking.",
+    tags: ["Specialty Coffee", "Craft Beer", "Perfumes", "Cooking", "Guitar"],
+  },
+];
+
 export const navLinks = [
   { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
   { label: "Projects", href: "#projects" },
   { label: "Education", href: "#education" },
   { label: "Publications", href: "#publications" },
+  { label: "Beyond Work", href: "#beyond-work" },
   { label: "Contact", href: "#contact" },
 ] as const;

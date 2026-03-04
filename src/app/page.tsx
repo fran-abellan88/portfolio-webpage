@@ -5,6 +5,7 @@ import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
 import Education from "@/components/sections/Education";
 import Publications from "@/components/sections/Publications";
+import BeyondWork from "@/components/sections/BeyondWork";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 import ParticlesBgLoader from "@/components/ui/ParticlesBgLoader";
@@ -22,6 +23,7 @@ export default function Home() {
         <Projects />
         <Education />
         <Publications />
+        <BeyondWork />
         <Contact />
       </main>
       <Footer />
