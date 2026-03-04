@@ -100,6 +100,7 @@ export default function Hero() {
               alt={personal.name}
               fill
               priority
+              sizes="(max-width: 768px) 256px, 320px"
               className="object-cover"
             />
           </div>

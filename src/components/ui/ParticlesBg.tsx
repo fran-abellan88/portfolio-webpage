@@ -10,8 +10,9 @@ interface Particle {
   radius: number;
 }
 
-const PARTICLE_COUNT = 80;
+const PARTICLE_COUNT = 50;
 const CONNECTION_DISTANCE = 150;
+const CONNECTION_DISTANCE_SQ = CONNECTION_DISTANCE * CONNECTION_DISTANCE;
 const PARTICLE_SPEED = 0.3;
 
 export default function ParticlesBg() {
@@ -26,6 +27,7 @@ export default function ParticlesBg() {
 
     let animationId: number;
     let particles: Particle[] = [];
+    let resizeTimeout: ReturnType<typeof setTimeout>;
 
     const resize = () => {
       canvas.width = window.innerWidth;
@@ -62,10 +64,10 @@ export default function ParticlesBg() {
         for (let j = i + 1; j < particles.length; j++) {
           const dx = particles[i].x - particles[j].x;
           const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+          const distSq = dx * dx + dy * dy;
 
-          if (dist < CONNECTION_DISTANCE) {
-            const opacity = (1 - dist / CONNECTION_DISTANCE) * 0.15;
+          if (distSq < CONNECTION_DISTANCE_SQ) {
+            const opacity = (1 - Math.sqrt(distSq) / CONNECTION_DISTANCE) * 0.15;
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -79,18 +81,24 @@ export default function ParticlesBg() {
       animationId = requestAnimationFrame(animate);
     };
 
+    const handleResize = () => {
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+        resize();
+        initParticles();
+      }, 200);
+    };
+
     resize();
     initParticles();
     animate();
 
-    window.addEventListener("resize", () => {
-      resize();
-      initParticles();
-    });
+    window.addEventListener("resize", handleResize);
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener("resize", resize);
+      clearTimeout(resizeTimeout);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
