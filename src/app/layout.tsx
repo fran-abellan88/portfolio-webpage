@@ -17,6 +17,9 @@ const jetbrainsMono = JetBrains_Mono({
 const siteUrl = "https://franabellan.com";
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.svg",
+  },
   metadataBase: new URL(siteUrl),
   title: "Fran Abellán | Lead Data Scientist & AI Expert",
   description:

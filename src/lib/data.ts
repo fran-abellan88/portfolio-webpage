@@ -6,6 +6,7 @@ export const personal = {
     "Data Science leader with 7+ years driving high-impact ML and AI initiatives across insurance, energy, and telecom. PhD in Astrophysics with deep expertise in LLMs, predictive modeling, and cross-functional team leadership. Proven track record translating complex AI capabilities into measurable business outcomes.",
   email: "contact@franabellan.com",
   linkedin: "https://www.linkedin.com/in/franabellan/",
+  twitter: "https://x.com/FranAbellan88",
   cvFile: "/FranAbellan_CV_Mar26.pdf",
   photo: "/photo.jpg",
 } as const;
