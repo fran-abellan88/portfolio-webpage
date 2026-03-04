@@ -91,19 +91,18 @@ public/
 - [x] Set up email forwarding (contact@franabellan.com → Gmail)
 - [x] Update contact email and SEO metadata (canonical URL, metadataBase, og:url)
 
-### Phase 4 — Contact Form & Projects [NEXT]
-- [ ] Set up Formspree account and integrate with Contact form
-- [ ] Add project screenshots/previews to Projects cards
+### Phase 4 — Contact Form & Polish [DONE]
+- [x] Set up Formspree account and integrate with Contact form
+- [x] Add favicon (SVG with "FA" initials in accent color)
+- [x] Add Twitter/X social link to Footer and data
+- [x] Remove "Built with" text from Footer
 
-### Phase 5 — Polish & SEO
-- [ ] Structured data (JSON-LD) for Person schema
-- [ ] Favicon and site icons (generate from initials or logo)
-- [ ] Performance audit (target Lighthouse 90+ all categories)
-- [ ] Accessibility audit (WCAG 2.1 AA)
-- [ ] Micro-interactions and hover refinements
-- [ ] Custom 404 page
-- [ ] Vercel Analytics setup
-- [ ] Final responsive QA across devices
+### Phase 5 — SEO & Polish [DONE]
+- [x] Structured data (JSON-LD) for Person schema
+- [x] Performance: page.tsx as Server Component (SSG), optimized Image sizes, reduced particles (80→50), debounced resize
+- [x] Accessibility: focus-visible styles, skip-to-content link, aria-expanded on expandables, keyboard nav on Experience cards, aria-required on form, reduced-motion support, improved text contrast
+- [x] Custom 404 page
+- [x] Vercel Analytics (@vercel/analytics)
 
 ### Phase 6 — Future Enhancements (Post-Launch)
 - [ ] Hobbies & personal interests section
@@ -113,6 +112,7 @@ public/
 - [ ] Blog/articles section
 - [ ] Interactive career timeline visualization
 - [ ] GitHub API integration (contribution activity)
+- [ ] Project screenshots/previews carousel in Projects cards
 
 ---
 
