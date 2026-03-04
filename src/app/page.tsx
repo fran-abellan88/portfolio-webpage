@@ -8,6 +8,7 @@ import Publications from "@/components/sections/Publications";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/layout/Footer";
 import ParticlesBgLoader from "@/components/ui/ParticlesBgLoader";
+import ChatWidgetLoader from "@/components/chat/ChatWidgetLoader";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <ChatWidgetLoader />
     </>
   );
 }
