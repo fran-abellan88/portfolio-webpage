@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const inter = Inter({
@@ -52,6 +53,36 @@ export const metadata: Metadata = {
   },
 };
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Fran Abellán",
+  jobTitle: "Lead Data Scientist & AI Expert",
+  description:
+    "Data Science leader with 7+ years driving high-impact ML and AI initiatives across insurance, energy, and telecom. PhD in Astrophysics.",
+  url: siteUrl,
+  image: `${siteUrl}/photo.jpg`,
+  email: "contact@franabellan.com",
+  sameAs: [
+    "https://www.linkedin.com/in/franabellan/",
+    "https://x.com/FranAbellan88",
+  ],
+  alumniOf: [
+    {
+      "@type": "CollegeOrUniversity",
+      name: "University of Valencia",
+    },
+  ],
+  knowsAbout: [
+    "Machine Learning",
+    "Artificial Intelligence",
+    "Large Language Models",
+    "Data Science",
+    "Python",
+    "NLP",
+  ],
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -59,7 +90,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
-      <body className="min-h-screen" suppressHydrationWarning>{children}</body>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="min-h-screen" suppressHydrationWarning>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
