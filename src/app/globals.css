@@ -21,7 +21,7 @@
   /* Text */
   --color-text-primary: #e2e8f0;
   --color-text-secondary: #94a3b8;
-  --color-text-muted: #64748b;
+  --color-text-muted: #7a8ba0;
   --color-text-code: #a78bfa;
 
   /* Fonts */
@@ -65,4 +65,21 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-text-muted);
+}
+
+/* Focus visible */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

@@ -15,10 +15,18 @@ export default function Navbar() {
   }, []);
 
   return (
+    <>
+    <a
+      href="#experience"
+      className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-accent focus:text-bg-primary focus:rounded-lg focus:font-semibold"
+    >
+      Skip to content
+    </a>
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
+      aria-label="Main navigation"
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
           ? "bg-bg-primary/80 backdrop-blur-xl border-b border-border-default shadow-lg shadow-black/20"
@@ -56,6 +64,7 @@ export default function Navbar() {
           onClick={() => setMobileOpen(!mobileOpen)}
           className="md:hidden text-text-secondary hover:text-accent"
           aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             {mobileOpen ? (
@@ -96,5 +105,6 @@ export default function Navbar() {
         </motion.div>
       )}
     </motion.nav>
+    </>
   );
 }

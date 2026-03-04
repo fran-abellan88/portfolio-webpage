@@ -97,7 +97,8 @@ export default function Contact() {
                 id="name"
                 name="name"
                 required
-                className="w-full px-4 py-3 rounded-lg bg-bg-primary border border-border-default text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent/50 transition-colors"
+                aria-required="true"
+                className="w-full px-4 py-3 rounded-lg bg-bg-primary border border-border-default text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
                 placeholder="Your name"
               />
             </div>
@@ -110,7 +111,8 @@ export default function Contact() {
                 id="email"
                 name="email"
                 required
-                className="w-full px-4 py-3 rounded-lg bg-bg-primary border border-border-default text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent/50 transition-colors"
+                aria-required="true"
+                className="w-full px-4 py-3 rounded-lg bg-bg-primary border border-border-default text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors"
                 placeholder="your@email.com"
               />
             </div>
@@ -122,8 +124,9 @@ export default function Contact() {
                 id="message"
                 name="message"
                 required
+                aria-required="true"
                 rows={5}
-                className="w-full px-4 py-3 rounded-lg bg-bg-primary border border-border-default text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent/50 transition-colors resize-none"
+                className="w-full px-4 py-3 rounded-lg bg-bg-primary border border-border-default text-text-primary placeholder:text-text-muted focus:outline-none focus:border-accent focus:ring-1 focus:ring-accent transition-colors resize-none"
                 placeholder="Tell me about the opportunity..."
               />
             </div>
@@ -138,7 +141,7 @@ export default function Contact() {
               {status === "error" && "Try Again"}
             </button>
             {status === "error" && (
-              <p className="text-red-400 text-sm text-center">
+              <p role="alert" className="text-red-400 text-sm text-center">
                 Something went wrong. You can also reach me at{" "}
                 <a href={`mailto:${personal.email}`} className="underline">
                   {personal.email}

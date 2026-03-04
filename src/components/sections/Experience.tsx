@@ -23,12 +23,21 @@ export default function Experience() {
             <motion.div
               key={i}
               layout
+              role="button"
+              tabIndex={0}
+              aria-expanded={expandedIndex === i}
               className={`rounded-xl border transition-colors cursor-pointer ${
                 expandedIndex === i
                   ? "bg-bg-surface border-accent/20 shadow-lg shadow-accent/5"
                   : "bg-bg-surface/50 border-border-default hover:border-border-default/80"
               }`}
               onClick={() => setExpandedIndex(expandedIndex === i ? -1 : i)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  setExpandedIndex(expandedIndex === i ? -1 : i);
+                }
+              }}
             >
               <div className="p-6">
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
