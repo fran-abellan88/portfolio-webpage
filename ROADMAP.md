@@ -120,15 +120,21 @@ public/
 - [x] Add GitHub social link to personal data, Footer, and system prompt
 - [x] Skills section: Leadership card promoted to first position with accent highlight
 
-### Phase 7 — Future Enhancements (Post-Launch)
-- [ ] Hobbies & personal interests section
+### Phase 7 — Beyond Work Section [DONE]
+- [x] Beyond Work section with personal interests and hobbies
+
+### Phase 8 — PostHog Analytics [DONE]
+- [x] PostHog integration with custom event tracking (posthog-js)
+- [x] Events: CV download, chat interactions (open/close/message/limit), contact form, external link clicks, nav clicks
+- [x] PostHogProvider client component with lazy singleton initializer
+- [x] Centralized event constants in `lib/analytics-events.ts`
+
+### Phase 9 — Future Enhancements (Post-Launch)
+- [ ] GitHub API integration (contribution activity)
+- [ ] Project screenshots/previews carousel in Projects cards
 - [ ] Testimonials section (source quotes from LinkedIn recommendations)
 - [ ] Dark/light theme toggle
 - [ ] Internationalization (ES toggle)
-- [ ] Blog/articles section
-- [ ] Interactive career timeline visualization
-- [ ] GitHub API integration (contribution activity)
-- [ ] Project screenshots/previews carousel in Projects cards
 
 ---
 

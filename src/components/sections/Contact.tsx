@@ -3,6 +3,8 @@
 import SectionHeading from "@/components/ui/SectionHeading";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import { personal } from "@/lib/data";
+import { getPostHogClient } from "@/lib/posthog";
+import { ANALYTICS_EVENTS } from "@/lib/analytics-events";
 import { motion } from "framer-motion";
 import { useState, type FormEvent } from "react";
 
@@ -28,11 +30,14 @@ export default function Contact() {
       if (res.ok) {
         setStatus("sent");
         form.reset();
+        getPostHogClient()?.capture(ANALYTICS_EVENTS.CONTACT_FORM_SUBMITTED);
       } else {
         setStatus("error");
+        getPostHogClient()?.capture(ANALYTICS_EVENTS.CONTACT_FORM_ERROR);
       }
     } catch {
       setStatus("error");
+      getPostHogClient()?.capture(ANALYTICS_EVENTS.CONTACT_FORM_ERROR);
     }
   };
 
@@ -58,6 +63,7 @@ export default function Contact() {
             <div className="space-y-4">
               <a
                 href={`mailto:${personal.email}`}
+                onClick={() => getPostHogClient()?.capture(ANALYTICS_EVENTS.EXTERNAL_LINK_CLICK, { url: personal.email, label: "Email", source: "contact" })}
                 className="flex items-center gap-3 text-text-secondary hover:text-accent transition-colors"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -70,6 +76,7 @@ export default function Contact() {
                 href={personal.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => getPostHogClient()?.capture(ANALYTICS_EVENTS.EXTERNAL_LINK_CLICK, { url: personal.linkedin, label: "LinkedIn", source: "contact" })}
                 className="flex items-center gap-3 text-text-secondary hover:text-accent transition-colors"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -81,6 +88,7 @@ export default function Contact() {
                 href={personal.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => getPostHogClient()?.capture(ANALYTICS_EVENTS.EXTERNAL_LINK_CLICK, { url: personal.github, label: "GitHub", source: "contact" })}
                 className="flex items-center gap-3 text-text-secondary hover:text-accent transition-colors"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

@@ -1,6 +1,8 @@
 "use client";
 
 import { personal } from "@/lib/data";
+import { getPostHogClient } from "@/lib/posthog";
+import { ANALYTICS_EVENTS } from "@/lib/analytics-events";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -53,6 +55,7 @@ export default function Hero() {
             <a
               href={personal.cvFile}
               download
+              onClick={() => getPostHogClient()?.capture(ANALYTICS_EVENTS.CV_DOWNLOAD, { source: "hero" })}
               className="px-8 py-3 rounded-lg border border-accent/30 text-accent hover:bg-accent/10 transition-all"
             >
               Download CV
@@ -61,6 +64,7 @@ export default function Hero() {
               href={personal.linkedin}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => getPostHogClient()?.capture(ANALYTICS_EVENTS.EXTERNAL_LINK_CLICK, { url: personal.linkedin, label: "LinkedIn", source: "hero" })}
               className="px-8 py-3 rounded-lg border border-border-default text-text-secondary hover:border-accent/30 hover:text-accent transition-all"
             >
               LinkedIn
@@ -69,6 +73,7 @@ export default function Hero() {
               href={personal.github}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => getPostHogClient()?.capture(ANALYTICS_EVENTS.EXTERNAL_LINK_CLICK, { url: personal.github, label: "GitHub", source: "hero" })}
               className="px-8 py-3 rounded-lg border border-border-default text-text-secondary hover:border-accent/30 hover:text-accent transition-all"
             >
               GitHub

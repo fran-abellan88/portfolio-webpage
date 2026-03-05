@@ -1,4 +1,8 @@
+"use client";
+
 import { personal } from "@/lib/data";
+import { getPostHogClient } from "@/lib/posthog";
+import { ANALYTICS_EVENTS } from "@/lib/analytics-events";
 
 export default function Footer() {
   return (
@@ -12,6 +16,7 @@ export default function Footer() {
             href={personal.linkedin}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => getPostHogClient()?.capture(ANALYTICS_EVENTS.EXTERNAL_LINK_CLICK, { url: personal.linkedin, label: "LinkedIn", source: "footer" })}
             className="text-text-muted hover:text-accent transition-colors"
             aria-label="LinkedIn"
           >
@@ -23,6 +28,7 @@ export default function Footer() {
             href={personal.twitter}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => getPostHogClient()?.capture(ANALYTICS_EVENTS.EXTERNAL_LINK_CLICK, { url: personal.twitter, label: "Twitter", source: "footer" })}
             className="text-text-muted hover:text-accent transition-colors"
             aria-label="X / Twitter"
           >
@@ -34,6 +40,7 @@ export default function Footer() {
             href={personal.github}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => getPostHogClient()?.capture(ANALYTICS_EVENTS.EXTERNAL_LINK_CLICK, { url: personal.github, label: "GitHub", source: "footer" })}
             className="text-text-muted hover:text-accent transition-colors"
             aria-label="GitHub"
           >
@@ -43,6 +50,7 @@ export default function Footer() {
           </a>
           <a
             href={`mailto:${personal.email}`}
+            onClick={() => getPostHogClient()?.capture(ANALYTICS_EVENTS.EXTERNAL_LINK_CLICK, { url: personal.email, label: "Email", source: "footer" })}
             className="text-text-muted hover:text-accent transition-colors"
             aria-label="Email"
           >

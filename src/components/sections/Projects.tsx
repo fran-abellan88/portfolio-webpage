@@ -5,6 +5,8 @@ import SectionWrapper from "@/components/ui/SectionWrapper";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Badge from "@/components/ui/Badge";
 import { projects } from "@/lib/data";
+import { getPostHogClient } from "@/lib/posthog";
+import { ANALYTICS_EVENTS } from "@/lib/analytics-events";
 
 export default function Projects() {
   return (
@@ -40,6 +42,7 @@ export default function Projects() {
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => getPostHogClient()?.capture(ANALYTICS_EVENTS.EXTERNAL_LINK_CLICK, { url: project.url, label: project.title, source: "projects" })}
                   className="mt-4 inline-flex items-center gap-2 text-sm text-accent hover:underline"
                 >
                   View Live

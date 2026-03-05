@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import ChatMessages from "./ChatMessages";
 import ChatInput from "./ChatInput";
 import type { ChatMessage } from "@/lib/chat/types";
+import { getPostHogClient } from "@/lib/posthog";
+import { ANALYTICS_EVENTS } from "@/lib/analytics-events";
 
 const MAX_MESSAGES = 10;
 
@@ -17,6 +19,12 @@ export default function ChatWidget() {
 
   const userMessageCount = messages.filter((m) => m.role === "user").length;
   const limitReached = userMessageCount >= MAX_MESSAGES;
+
+  useEffect(() => {
+    if (limitReached) {
+      getPostHogClient()?.capture(ANALYTICS_EVENTS.CHAT_LIMIT_REACHED);
+    }
+  }, [limitReached]);
 
   useEffect(() => {
     function handleEscape(e: KeyboardEvent) {
@@ -32,6 +40,10 @@ export default function ChatWidget() {
   const sendMessage = useCallback(
     async (content: string) => {
       if (isStreaming || limitReached) return;
+
+      getPostHogClient()?.capture(ANALYTICS_EVENTS.CHAT_MESSAGE_SENT, {
+        message_index: userMessageCount + 1,
+      });
 
       const userMsg: ChatMessage = { role: "user", content };
       const newMessages = [...messages, userMsg];
@@ -92,7 +104,7 @@ export default function ChatWidget() {
         abortRef.current = null;
       }
     },
-    [messages, isStreaming, limitReached]
+    [messages, isStreaming, limitReached, userMessageCount]
   );
 
   const limitPlaceholder = limitReached
@@ -104,7 +116,11 @@ export default function ChatWidget() {
       {/* Floating button */}
       <button
         ref={buttonRef}
-        onClick={() => setOpen((prev) => !prev)}
+        onClick={() => {
+          const next = !open;
+          setOpen(next);
+          getPostHogClient()?.capture(next ? ANALYTICS_EVENTS.CHAT_OPEN : ANALYTICS_EVENTS.CHAT_CLOSE);
+        }}
         aria-label={open ? "Close AI assistant" : "Open AI assistant"}
         className="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-accent text-bg-primary shadow-lg shadow-accent/25 hover:shadow-accent/40 hover:scale-105 transition-all flex items-center justify-center"
       >
@@ -136,7 +152,10 @@ export default function ChatWidget() {
                 <span className="text-sm font-semibold text-text-primary">Ask my AI</span>
               </div>
               <button
-                onClick={() => setOpen(false)}
+                onClick={() => {
+                  setOpen(false);
+                  getPostHogClient()?.capture(ANALYTICS_EVENTS.CHAT_CLOSE);
+                }}
                 aria-label="Close chat"
                 className="text-text-muted hover:text-text-primary transition-colors"
               >

@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import SectionWrapper from "@/components/ui/SectionWrapper";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { publications } from "@/lib/data";
+import { getPostHogClient } from "@/lib/posthog";
+import { ANALYTICS_EVENTS } from "@/lib/analytics-events";
 
 export default function Publications() {
   return (
@@ -31,6 +33,7 @@ export default function Publications() {
             href={publications.url}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => getPostHogClient()?.capture(ANALYTICS_EVENTS.EXTERNAL_LINK_CLICK, { url: publications.url, label: "NASA ADS", source: "publications" })}
             className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-colors"
           >
             View on NASA ADS

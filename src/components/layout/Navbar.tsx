@@ -1,6 +1,8 @@
 "use client";
 
 import { navLinks, personal } from "@/lib/data";
+import { getPostHogClient } from "@/lib/posthog";
+import { ANALYTICS_EVENTS } from "@/lib/analytics-events";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -65,6 +67,7 @@ export default function Navbar() {
             <a
               key={link.href}
               href={link.href}
+              onClick={() => getPostHogClient()?.capture(ANALYTICS_EVENTS.NAV_LINK_CLICK, { label: link.label })}
               className="text-sm text-text-secondary hover:text-accent transition-colors"
             >
               {link.label}
@@ -73,6 +76,7 @@ export default function Navbar() {
           <a
             href={personal.cvFile}
             download
+            onClick={() => getPostHogClient()?.capture(ANALYTICS_EVENTS.CV_DOWNLOAD, { source: "navbar_desktop" })}
             className="text-sm px-4 py-2 rounded-lg bg-accent/10 text-accent border border-accent/20 hover:bg-accent/20 transition-colors"
           >
             Download CV
@@ -108,7 +112,10 @@ export default function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                onClick={() => setMobileOpen(false)}
+                onClick={() => {
+                  setMobileOpen(false);
+                  getPostHogClient()?.capture(ANALYTICS_EVENTS.NAV_LINK_CLICK, { label: link.label });
+                }}
                 className="text-text-secondary hover:text-accent transition-colors"
               >
                 {link.label}
@@ -117,6 +124,7 @@ export default function Navbar() {
             <a
               href={personal.cvFile}
               download
+              onClick={() => getPostHogClient()?.capture(ANALYTICS_EVENTS.CV_DOWNLOAD, { source: "navbar_mobile" })}
               className="text-sm px-4 py-2 rounded-lg bg-accent/10 text-accent border border-accent/20 text-center"
             >
               Download CV
