@@ -68,10 +68,10 @@ export const experience: Experience[] = [
   },
   {
     role: "Data Scientist",
-    company: "Telefonica — LUCA AI",
-    period: "Nov 2018 — May 2020",
+    company: "Telefónica — LUCA AI",
+    period: "Feb 2018 — May 2020",
     summary:
-      "End-to-end data science solutions for 5 enterprise clients across finance, pharma, energy, and telecom.",
+      "End-to-end data science solutions for 5 enterprise clients across finance, pharma, energy, and telecom. (Started at Synergic Partners, acquired by Telefónica)",
     bullets: [
       "Built a predictive maintenance system for Santander Tecnologia using sensor time-series, reducing unplanned downtime by ~25%",
       "Developed inventory forecasting models for Lilly across 15+ manufacturing materials, achieving >92% accuracy",
